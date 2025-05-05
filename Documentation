@@ -1,0 +1,56 @@
+Модули проекта
+1. app/database.py
+  Назначение: Настройка подключения к базе данных.
+
+  Ключевые компоненты:
+    SQLALCHEMY_DATABASE_URL: URL для подключения к SQLite.
+    engine: Движок SQLAlchemy.
+    SessionLocal: Фабрика сессий для взаимодействия с БД.
+    Base: Базовый класс для моделей SQLAlchemy.
+
+2. app/models.py
+  Назначение: Определение структуры таблиц базы данных.
+
+  Сущности:
+    Author: Авторы книг (поля: id, name).
+    Genre: Жанры книг (поля: id, name).
+    Book: Книги (поля: id, title, author_id, genre_id, rating).
+    User: Пользователи (поля: id, email, hashed_password).
+
+3. app/schemas.py
+  Назначение: Валидация данных через Pydantic.
+
+  Схемы:
+    BookSchema, AuthorSchema, GenreSchema: Для сериализации данных.
+    UserCreate: Для регистрации пользователей.
+    Token: Для возврата JWT-токена.
+
+4. app/auth.py
+  Назначение: Аутентификация и авторизация.
+
+  Функционал:
+    get_password_hash: Хеширование паролей.
+    create_access_token: Генерация JWT-токена.
+    get_current_user: Проверка токена и получение данных пользователя.
+
+5. Роутеры 
+app/routers/books.py
+  Эндпоинты:
+    POST /books/: Добавление книги.
+    GET /books/: Получение списка книг.
+    GET /books/{book_id}: Получение книги по ID.
+
+app/routers/authors.py
+  Эндпоинты:
+    POST /authors/: Добавление автора.
+    GET /authors/: Получение списка авторов.
+
+app/routers/genres.py
+  Эндпоинты:
+    POST /genres/: Добавление жанра.
+    GET /genres/: Получение списка жанров.
+
+app/routers/auth.py
+  Эндпоинты:
+    POST /auth/register: Регистрация пользователя.
+    POST /auth/token: Получение токена.
