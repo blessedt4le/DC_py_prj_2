@@ -1,0 +1,96 @@
+************* Module app.database
+app/database.py:8:0: C0304: Final newline missing (missing-final-newline)
+************* Module app.schemas
+app/schemas.py:64:0: C0304: Final newline missing (missing-final-newline)
+app/schemas.py:3:0: C0411: standard import "typing.Optional" should be placed before third party import "pydantic.BaseModel" (wrong-import-order)
+************* Module app.main
+app/main.py:15:0: C0304: Final newline missing (missing-final-newline)
+************* Module app.models
+app/models.py:31:0: C0304: Final newline missing (missing-final-newline)
+************* Module app.auth
+app/auth.py:49:0: C0304: Final newline missing (missing-final-newline)
+app/auth.py:45:8: W0707: Consider explicitly re-raising using 'except JWTError as exc' and 'raise credentials_exception from exc' (raise-missing-from)
+************* Module app.routers.authors
+app/routers/authors.py:56:0: C0304: Final newline missing (missing-final-newline)
+app/routers/authors.py:52:16: E0602: Undefined variable 'Book' (undefined-variable)
+app/routers/authors.py:52:29: E0602: Undefined variable 'Book' (undefined-variable)
+app/routers/authors.py:46:0: R1711: Useless return at end of function or method (useless-return)
+************* Module app.routers.books
+app/routers/books.py:26:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/books.py:30:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/books.py:62:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/books.py:65:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/books.py:79:0: C0304: Final newline missing (missing-final-newline)
+app/routers/books.py:71:0: R1711: Useless return at end of function or method (useless-return)
+************* Module app.routers.genres
+app/routers/genres.py:26:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/genres.py:53:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/genres.py:58:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/genres.py:71:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/genres.py:75:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/genres.py:78:0: C0304: Final newline missing (missing-final-newline)
+app/routers/genres.py:65:0: R1711: Useless return at end of function or method (useless-return)
+app/routers/genres.py:3:0: C0411: standard import "typing.List" should be placed before third party imports "fastapi.APIRouter", "sqlalchemy.orm.Session" (wrong-import-order)
+************* Module app.routers.auth
+app/routers/auth.py:27:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/auth.py:40:0: C0303: Trailing whitespace (trailing-whitespace)
+app/routers/auth.py:60:0: C0304: Final newline missing (missing-final-newline)
+app/routers/auth.py:52:0: R1711: Useless return at end of function or method (useless-return)
+app/routers/auth.py:2:0: C0411: standard import "typing.List" should be placed before third party import "fastapi.APIRouter" (wrong-import-order)
+************* Module app.tests.test_api
+app/tests/test_api.py:121:0: C0304: Final newline missing (missing-final-newline)
+app/tests/test_api.py:8:0: C0103: Constant name "token" doesn't conform to UPPER_CASE naming style (invalid-name)
+app/tests/test_api.py:54:4: W0621: Redefining name 'token' from outer scope (line 8) (redefined-outer-name)
+app/tests/test_api.py:73:4: W0621: Redefining name 'token' from outer scope (line 8) (redefined-outer-name)
+app/tests/test_api.py:93:4: W0621: Redefining name 'token' from outer scope (line 8) (redefined-outer-name)
+app/tests/test_api.py:103:4: W0621: Redefining name 'token' from outer scope (line 8) (redefined-outer-name)
+app/tests/test_api.py:1:0: R0801: Similar lines in 2 files
+==app.routers.authors:[11:21]
+==app.routers.books:[11:22]
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@router.post("/", response_model=AuthorSchema, status_code=status.HTTP_201_CREATED)
+def create_author(author: AuthorCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if not current_user:
+        raise HTTPException(status_code=401, detail="Требуется авторизация") (duplicate-code)
+app/tests/test_api.py:1:0: R0801: Similar lines in 2 files
+==app.routers.genres:[11:19]
+==app.tests.test_api:[11:18]
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+def clear_database(): (duplicate-code)
+app/tests/test_api.py:1:0: R0801: Similar lines in 2 files
+==app.routers.auth:[14:23]
+==app.routers.books:[11:19]
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@router.post("/register", response_model=UserSchema, status_code=status.HTTP_201_CREATED)
+def register(user: UserCreate, db: Session = Depends(get_db)):
+    # Проверка уникальности email (duplicate-code)
+app/tests/test_api.py:1:0: R0801: Similar lines in 2 files
+==app.auth:[15:22]
+==app.routers.authors:[11:19]
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@router.post("/", response_model=AuthorSchema, status_code=status.HTTP_201_CREATED)
+def create_author(author: AuthorCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)): (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 8.80/10 (previous run: 7.84/10, +0.95)
+
