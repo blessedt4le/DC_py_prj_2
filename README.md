@@ -9,8 +9,8 @@
 3) Установка
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/ваш-репозиторий.git
-   cd book-catalog
+   git clone https://github.com/blessedt4le/DC_py_prj_2
+   cd Book_catalog
    
 2. Установите зависимости:
 pip install -r requirements.txt
@@ -24,8 +24,10 @@ uvicorn app.main:app --reload
 Swagger UI: http://localhost:8000/docs
 ReDoc: http://localhost:8000/redoc
 
-5) Пример использования
+5) Запуск тестов
+pytest app/tests/test_api.py -v
 
+6) Пример использования
 Регистрация пользователя:
 curl -X POST "http://localhost:8000/auth/register" -H "Content-Type: application/json" -d '{"email": "user@example.com", "password": "secret"}'
 
